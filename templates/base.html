@@ -1,0 +1,122 @@
+{% load askga %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>{{ title }}</title>
+
+    {% load static %}
+    <!-- Bootstrap core CSS -->
+     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{% static 'css/ask.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Krona+One" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="/"><h3 class="my-navbar-brand">AskGA</h3></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <form class="form-inline mt-2 mt-md-0 my-search">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search..." aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+
+            <div class="user-item row">
+                {% if user.is_authenticated %}
+                <div class="col-md-4">
+                    <img class="my-img-avt" src="{{ user.profile.avatar.url }}" alt="">
+                </div>
+                <div class="col-md-6 pad-btn">
+                    <div class="btn-group">
+                        <button type="button" class="btn-outline-success
+                        btn btn-danger dropdown-toggle"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ user.username }}
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{% url 'ask' %}">New question</a>
+                            <a class="dropdown-item" href="settings">Settings</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                    <div class="col-md-12 pad-btn">
+                        <a href="{% url 'login' %}" class="my-font">log in</a>
+                        <a href="{% url 'register' %}" class="my-font">register</a>
+                    </div>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <div class="container my-header">
+        <div class="row">
+            {% block header %}
+            {% endblock header %}
+        </div>
+    </div>
+
+    <hr class="line">
+
+    <div class="container">
+        <div class="col-md-4 my-tags-block">
+            <div class="col-md-8">
+                <div class="tags-item">
+                    <div class="col-md-12">
+                        <h4 class="tags-heading">POPULAR TAGS</h4>
+                        <a class="tags" href="#">C/C++</a>
+                        <a class="tags" href="#">Java</a>
+                        <a class="tags" href="#">Web</a>
+                        <a class="tags" href="#">Mail</a>
+                        <a class="tags" href="#">smth interesting</a>
+                        <a class="tags" href="#">smth interesting 2</a>
+                    </div>
+                    <div class="col-md-12">
+                        <br><h4 class="tags-heading">BEST MEMBERS</h4>
+                        <ul type="circle">
+                            <!--<li><a class="tags" href="#">Mr Smith</a></li>-->
+                            <!--<li><a class="tags" href="#">Dr Web</a></li>-->
+                            <!--<li><a class="tags" href="#">Alex</a></li>-->
+                            <!--<li><a class="tags" href="#">GA</a></li>-->
+                            <!--<li><a class="tags" href="#">Madagascar</a></li>-->
+                            <!--<li><a class="tags" href="#">PC</a></li>-->
+                            <!--<li><a class="tags" href="#">master</a></li>-->
+                            <!--<li><a class="tags" href="#">IronMan</a></li>-->
+                            <!--<li><a class="tags" href="#">MrA</a></li>-->
+                            <!--<li><a class="tags" href="#">SH</a></li>-->
+                            {% rating %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+    <footer class="footer">
+        {% block footer %}
+        {% endblock footer %}
+    </footer>
+
+    <!--<script src="{% static 'js/jquery-3.2.1.slim.min.js' %}"></script>-->
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!--<script src="{% static 'js/csrf.js' %}"></script>-->
+    {% block js %}{% endblock %}
+</body>
+
+</html>

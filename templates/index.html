@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% if header == "New" %}
+    <div class="col-md-6">
+        <h6 class="page-title-1">New questions</h6>
+    </div>
+    <div class="col-md-6">
+        <a href="hot/"><h6 class="page-title-1">Hot questions</h6></a>
+    </div>
+
+{% elif header == "Hot" %}
+    <div class="col-md-6">
+        <a href="/"><h6 class="page-title-1">New questions</h6></a>
+    </div>
+    <div class="col-md-6">
+        <h6 class="page-title-1">Hot questions</h6>
+    </div>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="col-md-8">
+    {% for question in items %}
+        {% include "one_question.html" %}
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block footer %}
+    {% include "paginator.html" %}
+{% endblock %}
+
+

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<div class="col-md-8">
+    <h3 class="page-title">Tag: {{ tag.title }}</h3>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="col-md-8">
+    {% for question in items %}
+        {% include "one_question.html" %}
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block footer %}
+    {% include "paginator.html" %}
+{% endblock %}

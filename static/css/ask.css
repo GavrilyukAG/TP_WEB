@@ -1,0 +1,166 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px;
+    /* Vertically center the text there */
+    background-color: #f5f5f5;
+}
+
+/* Custom page CSS
+-------------------------------------------------- */
+
+/* Not required for template or sticky footer method. */
+
+body>.container {
+    padding: 50px 15px 0;
+}
+
+.footer>.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-top: 30px;
+}
+
+code {
+    font-size: 80%;
+}
+
+.question-list-item {
+    /* margin-top: 20px; */
+    margin-bottom: 65px;
+    border: solid 1px black;
+    border-radius: 10px;
+    background-color: #c3c3c3;
+    padding: 15px;
+}
+
+.user-item {
+    margin-right: 276px;
+}
+
+.pad-btn {
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.my-tags-block {
+    position: absolute;
+    margin-left: 862px;
+}
+
+.tags-item {
+    /* height: 500px; */
+    /* margin-top: 40px; */
+    /* width: 435px; */
+    /* margin-left: 100px; */
+    border-radius: 10px;
+    background-color: /*#c3c3c3;*/#343a40;
+    padding: 15px;
+}
+
+.my-search {
+    margin-left: 302px;
+}
+
+.my-navbar-brand {
+    margin-left: 150px;
+    font-family: 'Krona One', sans-serif;
+}
+
+.my-header {
+    margin-top: 50px;
+}
+
+.my-img-avt {
+    border-radius: 25px;
+    margin-bottom: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+.my-img {
+    border-radius: 25px;
+    margin-bottom: 10px;
+    width: 100px;
+    height: 100px;
+}
+
+.my-like-btn {
+    margin-left: 9px;
+    width: 80px;
+    border: 50px;
+}
+
+.like {
+    background-color: #28a745;
+}
+
+.dislike {
+    background-color: #e14646;
+}
+
+.line {
+    height: 10px;
+    border: 0;
+    box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
+
+.view {
+    padding-top: 15px;
+    margin-left: 10px;
+}
+
+.tags {
+    color: #28a745;
+    font: 14pt/5pt sans-serif;
+    margin-right: 10px;
+}
+
+.tags-heading {
+    color: white;
+    font: bold italic 14pt serif;
+}
+
+.my-font {
+    margin: 10px;
+    font-family: 'Krona One', sans-serif;
+    color: white;
+}
+
+.wrong-data {
+    color: red;
+    padding: 20px;
+    margin-left: 175px;
+}
+
+.page-title {
+    text-align: center;
+    font-family: 'Krona One', sans-serif;
+    font-size: 20pt;
+}
+
+.page-title-1 {
+    font-family: 'Krona One', sans-serif;
+    font-size: 20pt;
+}
+
+.answer-list-item {
+    margin-bottom: 65px;
+    border: solid 1px black;
+    border-radius: 10px;
+    /* background-color: #c3c3c3; */
+    padding: 15px;
+}

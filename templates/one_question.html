@@ -1,0 +1,37 @@
+{% load static %}
+
+<div class="col-md-12">
+    <div class="row question-list-item">
+        <div class="col-md-2">
+            <img class="my-img" src="{% static 'img/default_pic_2.png' %}" alt="">
+            <div>
+                <div class="btn-group-vertical btn-group-sm my-like-btn" role="group"
+                     aria-label="Basic example">
+                    <button type="button" class="btn btn-secondary like">+</button>
+                    <button type="button" class="btn btn-secondary">{{ question.rating }}</button>
+                    <button type="button" class="btn btn-secondary dislike">-</button>
+                </div>
+            </div>
+            <div class="view">
+                <a href="{% url 'question' question.id %}">answers {{ question.answer.count }}</a>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <a href="{% url 'question' question.id %}">
+                <h3>{{ question.title }}</h3>
+            </a>
+            <p>
+                {{ question.text }}
+            </p>
+            <div class="row">
+                <div style="margin: auto;">
+                    {% for tag in question.tags.all %}
+                    <a class="btn btn-primary btn-sm" href="{% url 'tag' tag.id %}" role="button">
+                        {{ tag }}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

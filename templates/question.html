@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block header %}
+        <div class="col-md-8">
+            <h3 class="page-title">{{ question.title }}</h3>
+        </div>
+    {% endblock %}
+
+    {% block content %}
+
+        <a href="" class="js_askga_vote"
+           data-qid="{{ question.id }}"
+           data-vote="inc"
+        >inc</a>
+
+        <a href="#" class="js_askga_vote"
+           data-qid="{{ question.id }}"
+           data-vote="dec"
+        >dec</a>
+
+        <div class="col-md-8">
+            {% include "one_question.html" %}
+
+            <h3 class="page-title">Answers</h3>
+            <hr class="line">
+            {% for answer in items %}
+            <div class="col-md-12">
+                <div class="row answer-list-item">
+                    <div class="col-md-2">
+                        <img class="my-img" src="{% static 'img/lorem.jpeg' %}" alt="">
+                        <div>
+                            <div class="btn-group-vertical btn-group-sm my-like-btn" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-secondary like">+</button>
+                                <button type="button" class="btn btn-secondary">{{ answer.rating }}</button>
+                                <button type="button" class="btn btn-secondary dislike">-</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <p>
+                            {{ answer.text }}
+                        </p>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-check">
+
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        Correct!
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <hr class="line">
+
+            <form>
+                <div class="form-group">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter your answer here"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Answer</button>
+            </form>
+        </div>
+    {% endblock %}
+
+    {% block footer %}
+        {% include "paginator.html" %}
+    {% endblock %}
+
+    {% block js %}
+    <script>
+        (function() {
+            $('.js_askga_vote').on('click', function() {
+                var $this = $(this),
+                    qid = $this.data('qid'),
+                    vote = $this.data('vote');
+
+                $.post('/vote', {
+                    'qid': qid,
+                    'vote': vote
+                }).done(function(data) {
+                     console.log(data);
+                });
+
+                return false;
+            });
+        })();
+    </script>
+    {% endblock %}

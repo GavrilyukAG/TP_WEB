@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<div class="col-md-8">
+    <h3 class="page-title">New question</h3>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="col-md-8">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <img src="{{ profile.avatar.url }}" alt="">
+        <div>
+            <label for="avatar">Avatar</label>
+            <input type="file" class="form-control-file" name="avatar" id="avatar">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Load</button>
+    </form>
+</div>
+{% endblock %}
